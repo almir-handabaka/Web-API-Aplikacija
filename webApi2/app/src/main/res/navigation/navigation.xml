@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/pocetnaFragment">
+
+    <fragment
+        android:id="@+id/pocetnaFragment"
+        android:name="com.example.webapi.PocetnaFragment"
+        android:label="Web API" >
+        <action
+            android:id="@+id/action_pocetnaFragment_to_postavkeFragment"
+            app:destination="@id/postavkeFragment" />
+        <action
+            android:id="@+id/action_pocetnaFragment_to_listaFragment"
+            app:destination="@id/listaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postavkeFragment"
+        android:name="com.example.webapi.PostavkeFragment"
+        android:label="Postavke"
+        tools:layout="@layout/fragment_postavke" />
+    <fragment
+        android:id="@+id/listaFragment"
+        android:name="com.example.webapi.ListaFragment"
+        android:label="Web API"
+        tools:layout="@layout/fragment_lista" />
+    <fragment
+        android:id="@+id/OAplikaciji2"
+        android:name="com.example.webapi.OAplikaciji"
+        android:label="O Aplikaciji" />
+    <fragment
+        android:id="@+id/OStudentima2"
+        android:name="com.example.webapi.OStudentima"
+        android:label="O Studentima" />
+</navigation>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">webApi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="o_aplikaciji">O aplikaciji</string>
+    <string name="o_studentima">O studentima</string>
+    <string name="podijeli">Podijeli</string>
+    <string name="studenti">Studenti</string>
+    <string name="almir_handabaka">Almir Handabaka</string>
+    <string name="erdin_idrizovi">Erdin Idrizović</string>
+</resources>
