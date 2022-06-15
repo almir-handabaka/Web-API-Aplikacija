@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Korisnik/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/Korisnik/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/layout/fragment_lista.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/layout/fragment_o_aplikaciji.xml" value="0.27291666666666664" />
@@ -11,6 +13,10 @@
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/layout/fragment_postavke.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/menu/bocni_menu.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Korisnik/Desktop/webApi2/app/src/main/res/menu/menu_opcije.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Korisnik/Documents/GitHub/Web-API-Aplikacija/webApi2/app/src/main/res/layout/fragment_lista.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Korisnik/Documents/GitHub/Web-API-Aplikacija/webApi2/app/src/main/res/layout/fragment_o_studentima.xml" value="0.273058884835852" />
+        <entry key="..\:/Users/Korisnik/Documents/GitHub/Web-API-Aplikacija/webApi2/app/src/main/res/layout/fragment_pocetna.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Korisnik/Documents/GitHub/Web-API-Aplikacija/webApi2/app/src/main/res/layout/fragment_postavke.xml" value="0.2" />
       </map>
     </option>
   </component>
