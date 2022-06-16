@@ -25,7 +25,11 @@
         android:id="@+id/listaFragment"
         android:name="com.example.webapi.ListaFragment"
         android:label="Web API"
-        tools:layout="@layout/fragment_lista" />
+        tools:layout="@layout/fragment_lista" >
+        <action
+            android:id="@+id/action_listaFragment_to_detaljiFragment"
+            app:destination="@id/detaljiFragment" />
+    </fragment>
     <fragment
         android:id="@+id/OAplikaciji2"
         android:name="com.example.webapi.OAplikaciji"
@@ -34,4 +38,30 @@
         android:id="@+id/OStudentima2"
         android:name="com.example.webapi.OStudentima"
         android:label="O Studentima" />
+    <activity
+        android:id="@+id/detaljiFragment"
+        android:name="com.example.webapi.DetaljiFragment"
+        android:label="DetaljiFragment" >
+        <argument
+            android:name="nazivValute"
+            app:argType="string" />
+        <argument
+            android:name="simbol"
+            app:argType="string" />
+        <argument
+            android:name="rank"
+            app:argType="integer" />
+        <argument
+            android:name="cijena"
+            app:argType="integer" />
+        <argument
+            android:name="marketCap"
+            app:argType="integer" />
+        <argument
+            android:name="btcPrice"
+            app:argType="integer" />
+        <argument
+            android:name="volume24h"
+            app:argType="integer" />
+    </activity>
 </navigation>

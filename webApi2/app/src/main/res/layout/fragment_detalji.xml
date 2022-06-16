@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/kriptoDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="44dp"
+            android:text="Naziv valute:"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/kriptoNaziv"
+            android:layout_width="192dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="44dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.33"
+            app:layout_constraintStart_toEndOf="@+id/kriptoDetalj"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/simbolDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Simbol:"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kriptoDetalj" />
+
+        <TextView
+            android:id="@+id/simbolNaziv"
+            android:layout_width="192dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/simbolDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/kriptoNaziv" />
+
+        <TextView
+            android:id="@+id/rankDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Rank: "
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/simbolDetalj" />
+
+        <TextView
+            android:id="@+id/rankVrijednost"
+            android:layout_width="192dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/simbolDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/simbolNaziv" />
+
+        <TextView
+            android:id="@+id/cijenaDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Cijena: "
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rankDetalj" />
+
+        <TextView
+            android:id="@+id/cijenaVrijednost"
+            android:layout_width="192dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="92dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/rankDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/rankVrijednost" />
+
+        <TextView
+            android:id="@+id/marketCapDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Market cap: "
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cijenaDetalj" />
+
+        <TextView
+            android:id="@+id/marketCapVrijednost"
+            android:layout_width="192dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="76dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/cijenaDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/cijenaVrijednost" />
+
+        <TextView
+            android:id="@+id/btcPriceDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="BTC price: "
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/marketCapDetalj" />
+
+        <TextView
+            android:id="@+id/btcPriceVrijednost"
+            android:layout_width="192dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/marketCapDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/marketCapVrijednost" />
+
+        <TextView
+            android:id="@+id/volume24hDetalj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="24h volume: "
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btcPriceDetalj" />
+
+        <TextView
+            android:id="@+id/volume24hVrijednost"
+            android:layout_width="194dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:textSize="26dp"
+            app:layout_constraintStart_toEndOf="@+id/btcPriceDetalj"
+            app:layout_constraintTop_toBottomOf="@+id/btcPriceVrijednost" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
