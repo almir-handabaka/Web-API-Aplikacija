@@ -46,8 +46,8 @@ class PocetnaFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getPost()
         viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
-            Log.i("networklogovanje", response.title)
-            Log.i("networklogovanje", response.body)
+            Log.i("networklogovanje", response.status)
+            Log.i("networklogovanje", response.status)
 
         })
 

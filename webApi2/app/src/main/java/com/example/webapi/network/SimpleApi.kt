@@ -3,6 +3,6 @@ package com.example.webapi.network
 import retrofit2.http.GET
 
 interface SimpleApi {
-	@GET("/posts/1")
+	@GET("coins")
 	suspend fun getPost(): Post
 }

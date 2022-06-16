@@ -1,5 +1,6 @@
 package com.example.webapi.network
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,6 +13,7 @@ class MainViewModel(private val repository: Repository): ViewModel(){
 	fun getPost(){
 		viewModelScope.launch{
 			val response = repository.getPost()
+			Log.i("networkloging1", response.toString())
 			myResponse.value = response
 		}
 	}

@@ -8,8 +8,8 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
-//private const val BASE_URL = "https://api.coinranking.com"
-private const val BASE_URL = "https://jsonplaceholder.typicode.com"
+private const val BASE_URL = "https://api.coinranking.com/v2/"
+//private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 
 
 
