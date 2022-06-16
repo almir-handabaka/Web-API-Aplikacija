@@ -1,7 +1,8 @@
 package com.example.webapi.network
 
 
-interface SimpleApi {
-	@GET("posts/1")
-	suspend fun getPost(): Post
+class Repository {
+	suspend fun getPost(): Post{
+		return retrofitInstance.api.getPost()
+	}
 }

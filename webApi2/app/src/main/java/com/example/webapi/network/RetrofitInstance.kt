@@ -8,36 +8,30 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
 
-enum class MarsApiFilter(val value: String) {
-    SHOW_RENT("rent"),
-    SHOW_BUY("buy"),
-    SHOW_ALL("all") }
-
-private const val BASE_URL = "https://api.coinranking.com/"
+//private const val BASE_URL = "https://api.coinranking.com"
+private const val BASE_URL = "https://jsonplaceholder.typicode.com"
 
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
 
+object retrofitInstance {
 
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(BASE_URL)
-    .build()
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
-interface SimpleService {
+    private val retrofit by lazy {
+        Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .baseUrl(BASE_URL)
+            .build()
+    }
 
-    @Headers("x-access-token: coinrankingf8050d8b73b9974cd10b9fffb5efcbb73eddb185fb354ad9")
-    @GET("v2/coins")
-    suspend fun getProperties(@Query("filter") type: String): List<KriptoValuta>
+    val api: SimpleApi by lazy {
+        retrofit.create(SimpleApi::class.java)
+    }
 }
 
-/**
- * A public Api object that exposes the lazy-initialized Retrofit service
- */
-object SimpleServiceApi {
-    val retrofitService : SimpleService by lazy { retrofit.create(SimpleService::class.java) }
-}
+
+
 
 

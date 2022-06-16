@@ -1,7 +1,11 @@
 package com.example.webapi.network
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
-interface SimpleApi {
-	@GET("posts/1")
-	suspend fun getPost(): Post
+class MainViewModelFactory(private val repository: Repository):ViewModelProvider.Factory{
+	override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+		return MainViewModel(repository) as T
+	}
+
 }

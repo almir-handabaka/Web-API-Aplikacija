@@ -1,5 +1,6 @@
 package com.example.webapi
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,17 +12,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.webapi.databinding.FragmentPocetnaBinding
-import com.example.webapi.network.OverviewViewModel
+import com.example.webapi.network.MainViewModel
+import com.example.webapi.network.MainViewModelFactory
+import com.example.webapi.network.Repository
 
 
 class PocetnaFragment : Fragment() {
-    private val viewModel: OverviewViewModel by lazy {
-        ViewModelProvider(this).get(OverviewViewModel::class.java)
-    }
+    private lateinit var viewModel: MainViewModel
+    lateinit private var mContext: Context
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
     }
 
     override fun onCreateView(
@@ -34,18 +41,21 @@ class PocetnaFragment : Fragment() {
             view.findNavController().navigate(R.id.action_pocetnaFragment_to_postavkeFragment)
         }
 
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPost()
+        viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
+            Log.i("networklogovanje", response.title)
+            Log.i("networklogovanje", response.body)
+
+        })
+
+
         binding.daljeButton.setOnClickListener { view : View ->
             Log.i("problem", "usao u dugme za dalje")
 
-            viewModel.properties.observe(viewLifecycleOwner, Observer{kvalute->
-                for(i in 0..kvalute.size){
-                    Log.i("problem", kvalute[i].toString())
-                }
-            })
-            Log.i("problem", viewModel.properties.toString())
-
             view.findNavController().navigate(R.id.action_pocetnaFragment_to_listaFragment)
-
         }
 
         setHasOptionsMenu(true)
