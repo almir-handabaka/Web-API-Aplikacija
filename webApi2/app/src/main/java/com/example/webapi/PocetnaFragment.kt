@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.webapi.databinding.FragmentPocetnaBinding
+import com.example.webapi.network.Coin
 import com.example.webapi.network.MainViewModel
 import com.example.webapi.network.MainViewModelFactory
 import com.example.webapi.network.Repository
@@ -47,7 +48,12 @@ class PocetnaFragment : Fragment() {
         viewModel.getPost()
         viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
             Log.i("networklogovanje", response.status)
-            Log.i("networklogovanje", response.status)
+            for(i in 0..response.data.coins.size - 1){
+
+                Log.i("networklogovanje2", response.data.coins[i].name ?: "null name")
+                Log.i("networklogovanje2", response.data.coins[i].price ?: "null price")
+                Log.i("networklogovanje2", "--------------")
+            }
 
         })
 
@@ -61,6 +67,8 @@ class PocetnaFragment : Fragment() {
         setHasOptionsMenu(true)
         return binding.root
     }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
