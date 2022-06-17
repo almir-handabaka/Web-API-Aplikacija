@@ -20,7 +20,7 @@ data class Kripto(
     val cijena: Double,
 
     @ColumnInfo(name = "rank")
-    val rank: Double,
+    val rank: Int,
 
     @ColumnInfo(name = "slika")
     val slika: String,
