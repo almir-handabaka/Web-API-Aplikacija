@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class KriptoViewModel(application: Application): AndroidViewModel(application) {
-    val readAllData: LiveData<List<Kripto>>
+    lateinit var readAllData: LiveData<List<Kripto>>
     private val repository: KriptoRepository
     init {
         val kriptoDao = MyDatabase.getInstance(application).kriptoDao()
@@ -26,6 +26,17 @@ class KriptoViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    fun addBatchKriptos(kriptos: List<Kripto>){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.BatchInsert(kriptos)
+        }
+    }
+
+    fun clearTable(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteAll()
+        }
+    }
 
 
     fun getKriptoById(id:Long): Kripto? {

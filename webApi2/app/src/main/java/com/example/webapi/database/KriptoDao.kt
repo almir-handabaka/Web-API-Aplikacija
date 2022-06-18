@@ -16,6 +16,9 @@ interface KriptoDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addKripto(kripto: Kripto)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAll(kriptos: List<Kripto>)
+
     @Update
     suspend  fun update(kripto: Kripto)
 
@@ -27,7 +30,7 @@ interface KriptoDao {
     suspend fun clear()
 
     @Query("SELECT * FROM kriptovalute ORDER BY kriptoId DESC")
-     fun getAllKriptos(): LiveData<List<Kripto>>
+    fun getAllKriptos(): LiveData<List<Kripto>>
     //za filtriranje dodati upite npr. za cijenu, 24hvolume, markercap
 
     @Query("SELECT * FROM kriptovalute ORDER BY kriptoId DESC LIMIT 1")
