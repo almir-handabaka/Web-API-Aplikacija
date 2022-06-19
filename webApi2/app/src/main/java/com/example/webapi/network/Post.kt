@@ -1,5 +1,7 @@
 package com.example.webapi.network
 
+import com.example.webapi.database.Kripto
+
 data class Coin(
 	val uuid: String?,
 	val symbol: String?,
@@ -17,11 +19,10 @@ data class Coin(
 )
 
 data class Data(
-	val coins: List<Coin>
+	val coins: List<Kripto>
 )
 
 
 data class Post (
-	val status: String,
 	val data: Data
 )

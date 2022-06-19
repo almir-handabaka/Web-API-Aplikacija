@@ -16,6 +16,9 @@ interface KriptoDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addKripto(kripto: Kripto)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAll(kriptos: List<Kripto>)
+
     @Update
     suspend  fun update(kripto: Kripto)
 

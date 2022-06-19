@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.example.webapi.database.KriptoViewModel
 import com.example.webapi.databinding.FragmentPocetnaBinding
 import com.example.webapi.network.Coin
 import com.example.webapi.network.MainViewModel
@@ -21,7 +22,7 @@ import com.example.webapi.network.Repository
 class PocetnaFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     lateinit private var mContext: Context
-
+    private lateinit var  myKriptoViewModel: KriptoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +43,18 @@ class PocetnaFragment : Fragment() {
             view.findNavController().navigate(R.id.action_pocetnaFragment_to_postavkeFragment)
         }
 
+
+        myKriptoViewModel = ViewModelProvider(this).get(KriptoViewModel::class.java)
+
+
         val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository)
+        val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getPost()
-        viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
-            Log.i("networklogovanje", response.status)
+
+
+        /*viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
+            Log.i("networklogovanje", "observer")
             for(i in 0..response.data.coins.size - 1){
 
                 Log.i("networklogovanje2", response.data.coins[i].name ?: "null name")
@@ -55,8 +62,11 @@ class PocetnaFragment : Fragment() {
                 Log.i("networklogovanje2", "--------------")
             }
 
-        })
+        })*/
 
+        myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
+            Log.i("networklogovanje3", grad.size.toString())
+        })
 
         binding.daljeButton.setOnClickListener { view : View ->
             Log.i("problem", "usao u dugme za dalje")

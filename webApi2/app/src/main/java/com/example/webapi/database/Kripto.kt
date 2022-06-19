@@ -10,31 +10,44 @@ data class Kripto(
     @PrimaryKey(autoGenerate = true)
     val kriptoId: Long = 0L,
 
-    @ColumnInfo(name = "naziv_valute")
-    val naziv_valute: String,
+    @ColumnInfo(name = "uuid")
+    val uuid: String?,
 
-    @ColumnInfo(name = "simbol_valute")
-    val skracenica_valute: String,
+    @ColumnInfo(name = "symbol")
+    val symbol: String?,
 
-    @ColumnInfo(name = "cijena")
-    val cijena: Double,
+    @ColumnInfo(name = "name")
+    val name: String?,
 
-    @ColumnInfo(name = "rank")
-    val rank: Int,
+    @ColumnInfo(name = "color")
+    val color: String?,
 
-    @ColumnInfo(name = "slika")
-    val slika: String,
+    @ColumnInfo(name = "iconUrl")
+    val iconUrl: String?,
 
     @ColumnInfo(name = "marketCap")
-    val marketCap: Double,
+    val marketCap: String?,
+
+    @ColumnInfo(name = "price")
+    val price: String?,
 
     @ColumnInfo(name = "btcPrice")
-    val btcPrice: Double,
+    val btcPrice: String?,
+
+    @ColumnInfo(name = "listedAt")
+    val listedAt: Int?,
 
     @ColumnInfo(name = "change")
-    val change: Double,
+    val change: String?,
+
+    @ColumnInfo(name = "rank")
+    val rank: Int?,
+
+    @ColumnInfo(name = "coinrankingUrl")
+    val coinrankingUrl: String?,
 
     @ColumnInfo(name = "volume24h")
-    val volume24h : Double,
+    val volume24h: String?,
+    )
 
-)
+

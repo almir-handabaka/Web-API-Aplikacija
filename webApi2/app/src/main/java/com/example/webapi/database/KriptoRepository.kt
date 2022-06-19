@@ -19,6 +19,13 @@ class KriptoRepository (private val kriptoDao: KriptoDao){
 
     suspend fun getAllKripto(): LiveData<List<Kripto>>{
         return kriptoDao.getAllKriptos()
+    }
 
+    suspend fun BatchInsert(kriptos: List<Kripto>){
+        kriptoDao.insertAll(kriptos)
+    }
+
+    suspend fun deleteAll(){
+         kriptoDao.clear()
     }
 }
