@@ -14,16 +14,24 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.webapi.adapter.ItemAdapter
+import com.example.webapi.database.Kripto
+import com.example.webapi.database.KriptoViewModel
 import com.example.webapi.databinding.FragmentListaBinding
+import com.example.webapi.network.MainViewModel
+import com.example.webapi.network.MainViewModelFactory
+import com.example.webapi.network.Repository
 
 
 class ListaFragment : Fragment(), KlikZaDetalje {
 
-
+    private lateinit var viewModel: MainViewModel
+    private lateinit var  myKriptoViewModel: KriptoViewModel
 
     lateinit private var mContext: Context
 
@@ -31,7 +39,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
     private lateinit var recyclerView: RecyclerView
 
-    val podaci = ArrayList<Podaci>()
+    val podaci = listOf<Kripto>()
 
     val filteri = arrayOf("najbolji - najgori", "najgori - najbolji", "cijena", "marketcap", "24hvolume")
 
@@ -52,6 +60,14 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         val binding = DataBindingUtil.inflate<FragmentListaBinding>(inflater, R.layout.fragment_lista, container, false)
         val view = binding.root
 
+        // api i db
+        myKriptoViewModel = ViewModelProvider(this).get(KriptoViewModel::class.java)
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        viewModel.getPost()
+
+
         val spinnerFiltera = binding.spinner4
 
         val arraySpinnerFiltera = ArrayAdapter<String>(mContext, android.R.layout.simple_spinner_dropdown_item, filteri)
@@ -70,7 +86,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         }
 
         recyclerView = view.findViewById(R.id.recycler_view)
-        kreirajNiz()
+        //kreirajNiz()
         adapter = ItemAdapter(podaci, this)
 
         recyclerView.layoutManager = LinearLayoutManager(mContext)
@@ -78,24 +94,24 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
         adapter.notifyDataSetChanged()
 
+        myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
+            Log.i("networklogovanje3", grad.size.toString())
+            (adapter as ItemAdapter).setData(grad)
+        })
 
 
         return binding.root
     }
 
-    fun kreirajNiz() {
-        for(i in 1..10) {
-            podaci.add(Podaci("nazivValute" + i, "simbol" + i, 1, i*i, i*2, i*3, i*4));
-        }
-    }
+
 
     override fun onKriptoItemClicked(position: Int) {
         Log.i("problem", "usao u onKriptoItemClicked");
         val intent = Intent(getActivity(), DetaljiFragment::class.java)
-        intent.putExtra("nazivValute", podaci[position].nazivValute)
-        intent.putExtra("simbol", podaci[position].simbol)
+        intent.putExtra("nazivValute", podaci[position].name)
+        intent.putExtra("simbol", podaci[position].symbol)
         intent.putExtra("rank", podaci[position].rank.toString())
-        intent.putExtra("cijena", podaci[position].cijena.toString())
+        intent.putExtra("cijena", podaci[position].price.toString())
         intent.putExtra("marketCap", podaci[position].marketCap.toString())
         intent.putExtra("btcPrice", podaci[position].btcPrice.toString())
         intent.putExtra("volume24h", podaci[position].volume24h.toString())

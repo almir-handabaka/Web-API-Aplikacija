@@ -10,22 +10,16 @@ import com.example.webapi.database.KriptoViewModel
 import kotlinx.coroutines.launch
 import retrofit2.http.GET
 
-// pokusati samo da spasimo stvari u db ako moze, na mjestima gdje nam trebaju podaci kupilo ih direkt iz db
 
 class MainViewModel(private val repository: Repository, var myKriptoViewModel: KriptoViewModel): ViewModel(){
 	val myResponse:MutableLiveData<Post> = MutableLiveData()
-
 
 	fun getPost(){
 		if(internetIsConnected()){
 			viewModelScope.launch{
 				val response = repository.getPost()
-				Log.i("networkloging1", response.toString())
-				Log.i("networklogovanje", "spasavanje u db")
 				myKriptoViewModel.clearTable()
-				Log.i("networklogovanje", "addBatchKriptos")
 				myKriptoViewModel.addBatchKriptos(response.data.coins)
-				Log.i("networklogovanje", "myResponse.value = response")
 				myResponse.value = response
 			}
 		}

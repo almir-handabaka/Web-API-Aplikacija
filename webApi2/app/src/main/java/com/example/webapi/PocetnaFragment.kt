@@ -51,6 +51,8 @@ class PocetnaFragment : Fragment() {
         val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.getPost()
+
+
         /*viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
             Log.i("networklogovanje", "observer")
             for(i in 0..response.data.coins.size - 1){
