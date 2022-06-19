@@ -39,7 +39,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
     private lateinit var recyclerView: RecyclerView
 
-    val podaci = listOf<Kripto>()
+    var podaci = listOf<Kripto>()
 
     val filteri = arrayOf("najbolji - najgori", "najgori - najbolji", "cijena", "marketcap", "24hvolume")
 
@@ -87,7 +87,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
         recyclerView = view.findViewById(R.id.recycler_view)
         //kreirajNiz()
-        adapter = ItemAdapter(podaci, this)
+        adapter = ItemAdapter(podaci, this, mContext)
 
         recyclerView.layoutManager = LinearLayoutManager(mContext)
         recyclerView.adapter = adapter
@@ -96,6 +96,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
         myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
             Log.i("networklogovanje3", grad.size.toString())
+            podaci = grad
             (adapter as ItemAdapter).setData(grad)
         })
 
@@ -106,7 +107,8 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
 
     override fun onKriptoItemClicked(position: Int) {
-        Log.i("problem", "usao u onKriptoItemClicked");
+        Log.i("networklogovanje4", "usao u onKriptoItemClicked");
+        Log.i("networklogovanje4", podaci.size.toString())
         val intent = Intent(getActivity(), DetaljiFragment::class.java)
         intent.putExtra("nazivValute", podaci[position].name)
         intent.putExtra("simbol", podaci[position].symbol)
