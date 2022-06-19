@@ -40,7 +40,6 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
                 <TextView
                     android:id="@+id/nazivValute"
                     android:layout_width="150dp"

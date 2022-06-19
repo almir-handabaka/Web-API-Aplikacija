@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.kartica.view.*
 
 class ItemAdapter(private var podaci: List<Kripto>, private val KlikZaDetalje: KlikZaDetalje, private val mContext: Context) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.kartica, parent, false)
