@@ -14,17 +14,55 @@ import retrofit2.http.GET
 class MainViewModel(private val repository: Repository, var myKriptoViewModel: KriptoViewModel): ViewModel(){
 	val myResponse:MutableLiveData<Post> = MutableLiveData()
 
+
+	fun dohvatiPodatkeSaCoinRanking(kategorija: String){
+		if (kategorija == "default"){
+			Log.i("networklogovanje", "default")
+			getPost()
+		}
+		else {
+			Log.i("networklogovanje", "getSelectedPost")
+			getSelectedPost(kategorija)
+		}
+	}
+
+
 	fun getPost(){
-		if(internetIsConnected()){
+		//if(internetIsConnected()){
+			Log.i("networklogovanje", "ima neta")
 			viewModelScope.launch{
 				val response = repository.getPost()
-				myKriptoViewModel.clearTable()
+				if(response.data.coins.size > 0){
+					myKriptoViewModel.clearTable()
+
+				}
+				Log.i("networklogovanje3", response.data.toString())
 				myKriptoViewModel.addBatchKriptos(response.data.coins)
 				myResponse.value = response
 			}
-		}
+		//} else {
+		//	Log.i("networklogovanje", "nema neta")
+		//}
 
 	}
+
+	fun getSelectedPost(tag:String){
+		//if(internetIsConnected()){
+		Log.i("networklogovanje", "ima neta")
+		viewModelScope.launch{
+			val response = repository.getSelectedPost(tag)
+			myKriptoViewModel.clearTable()
+			myKriptoViewModel.addBatchKriptos(response.data.coins)
+			myResponse.value = response
+		}
+		//} else {
+		//	Log.i("networklogovanje", "nema neta")
+		//}
+
+	}
+
+
+
 
 	fun internetIsConnected(): Boolean {
 		return try {

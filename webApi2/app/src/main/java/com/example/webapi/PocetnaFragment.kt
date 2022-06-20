@@ -44,13 +44,13 @@ class PocetnaFragment : Fragment() {
         }
 
 
-        myKriptoViewModel = ViewModelProvider(this).get(KriptoViewModel::class.java)
+        //myKriptoViewModel = ViewModelProvider(this).get(KriptoViewModel::class.java)
 
 
-        val repository = Repository()
-        val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPost()
+        //val repository = Repository()
+        //val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
+        //viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        //viewModel.getPost()
 
 
         /*viewModel.myResponse.observe(viewLifecycleOwner, Observer { response ->
@@ -64,9 +64,9 @@ class PocetnaFragment : Fragment() {
 
         })*/
 
-        myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
+        /*myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
             Log.i("networklogovanje3", grad.size.toString())
-        })
+        })*/
 
         binding.daljeButton.setOnClickListener { view : View ->
             Log.i("problem", "usao u dugme za dalje")
@@ -88,7 +88,7 @@ class PocetnaFragment : Fragment() {
     private fun getShareIntent() : Intent {
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.setType("text/plain")
-            .putExtra(Intent.EXTRA_TEXT, "Ovdje ide predefinisana poruka!")
+            .putExtra(Intent.EXTRA_TEXT, "Provjeri vrijednost top kriptovaluta koristeći najnoviju aplikaciju KriptoInfo :)")
         return shareIntent
     }
 
