@@ -30,8 +30,6 @@ import com.example.webapi.network.MainViewModel
 import com.example.webapi.network.MainViewModelFactory
 import com.example.webapi.network.Repository
 
-import com.example.webapi.databinding.FragmentListaBinding
-
 
 
 class ListaFragment : Fragment(), KlikZaDetalje {
@@ -71,7 +69,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         val repository = Repository()
         val viewModelFactory = MainViewModelFactory(repository, myKriptoViewModel)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-        viewModel.getPost()
+        viewModel.dohvatiPodatkeSaCoinRanking(Postavke.kategorije[Postavke.selektovana_kategorija])
 
 
 
@@ -84,6 +82,11 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         spinnerFiltera.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 Toast.makeText(mContext, "izabrana vrsta valute je: " + filteri[p2], Toast.LENGTH_SHORT).show()
+                Postavke.selektovano_sortiranje = p2
+                binding.izracunajPut.setOnClickListener {
+                    sortiraj()
+                }
+
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -105,6 +108,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
 
         myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {grad ->
             Log.i("networklogovanje3", grad.size.toString())
+
             podaci = grad
             (adapter as ItemAdapter).setData(grad)
         })
@@ -127,6 +131,39 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         intent.putExtra("btcPrice", podaci[position].btcPrice.toString())
         intent.putExtra("volume24h", podaci[position].volume24h.toString())
         startActivity(intent)
+    }
+
+    // sortiramo podaci i preko setData updatujemo recyclerview
+    fun sortiraj(){
+        // "najbolji - najgori", "najgori - najbolji", "cijena", "marketcap", "24hvolume"
+        Log.i("sortiranje", "Ulaz u funkciju")
+        val uslov = Postavke.selektovano_sortiranje
+        var tmp_podaci = podaci.toMutableList()
+
+        if(uslov == 0 || uslov == 1){
+            tmp_podaci.sortBy { it.rank }
+            if(uslov == 1){
+                tmp_podaci.reverse()
+            }
+        }
+        else if(uslov == 2){
+            tmp_podaci.sortBy { it.price?.toDouble() }
+            tmp_podaci.reverse()
+        }
+        else if(uslov == 3){
+            tmp_podaci.sortBy { it.marketCap?.toDouble() }
+            tmp_podaci.reverse()
+        }
+        else{
+            tmp_podaci.sortBy { it.volume24h }
+            tmp_podaci.reverse()
+        }
+
+        Log.i("sortiranje", "setData")
+        podaci = tmp_podaci
+        (adapter as ItemAdapter).setData(tmp_podaci)
+
+
     }
 
 }

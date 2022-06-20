@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_postavke.*
 class PostavkeFragment : Fragment() {
     lateinit private var mContext: Context
 
-    val vrsteValute = arrayOf("layer-1", "DeFi", "Stablecoin", "NFT", "DEX", "Exchange", "Staking", "DAO", "Meme", "Privacy")
+    val vrsteValute = arrayOf("top 50", "layer-1", "DeFi", "Stablecoin", "NFT", "DEX", "Exchange", "Staking", "DAO", "Meme", "Privacy")
     val valute = arrayOf("USD", "EUR", "BAM", "GBP", "BTC", "ETH")
 
 
@@ -53,6 +53,7 @@ class PostavkeFragment : Fragment() {
         spinnerVrsteValute.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 Toast.makeText(mContext, "izabrana vrsta valute je: " + vrsteValute[p2], Toast.LENGTH_SHORT).show()
+                Postavke.selektovana_kategorija = p2
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -64,6 +65,7 @@ class PostavkeFragment : Fragment() {
         spinnerValute.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 Toast.makeText(mContext, "izabrana valuta je: " + valute[p2], Toast.LENGTH_SHORT).show()
+                Postavke.selektovana_valuta = p2
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {

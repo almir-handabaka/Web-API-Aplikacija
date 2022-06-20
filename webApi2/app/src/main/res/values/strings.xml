@@ -9,5 +9,6 @@
     <string name="almir_handabaka">Almir Handabaka</string>
     <string name="erdin_idrizovi">Erdin Idrizović</string>
     <string name="refresh">Refresh</string>
+    <string name="aplikacija_koristi_coinranking_api_za_dohva_anje_podataka_o_top_kriptovalutama_na_samoj_po_etnoj_stranici_imate_mogu_nost_odabira_postavki_i_prikaza_liste_valuta_unutar_postavki_mo_ete_odabrati_vrstu_valute_kao_i_samu_valutu_za_prikazivanje_u_fragmentu_dalje_klikom_na_karticu_jedne_od_valuta_dobijate_prikaz_detaljnijih_informacija_i_tako_er_imate_mogu_nost_da_filtrirate_iste">Aplikacija koristi CoinRanking API za dohvaćanje podataka o top kriptovalutama. Na samoj početnoj stranici imate mogućnost odabira postavki i prikaza liste valuta. Unutar postavki možete odabrati vrstu valute kao i samu valutu za prikazivanje u fragmentu dalje. Klikom na karticu jedne od valuta dobijate prikaz detaljnijih informacija, i također imate mogućnost da filtrirate iste.</string>
 
 </resources>

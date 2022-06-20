@@ -36,6 +36,7 @@ class ItemAdapter(private var podaci: List<Kripto>, private val KlikZaDetalje: K
         val url: String = podatak.iconUrl!!
         Glide.with(mContext)
             .load(url)
+            .placeholder(R.drawable.logo)
             .into(holder.itemView.imageView2)
 
 

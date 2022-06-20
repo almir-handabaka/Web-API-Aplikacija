@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             android:padding="20dp"
-            android:text="Ovdje treba ici tekst vezan za aplikaciju"
+            android:text="@string/aplikacija_koristi_coinranking_api_za_dohva_anje_podataka_o_top_kriptovalutama_na_samoj_po_etnoj_stranici_imate_mogu_nost_odabira_postavki_i_prikaza_liste_valuta_unutar_postavki_mo_ete_odabrati_vrstu_valute_kao_i_samu_valutu_za_prikazivanje_u_fragmentu_dalje_klikom_na_karticu_jedne_od_valuta_dobijate_prikaz_detaljnijih_informacija_i_tako_er_imate_mogu_nost_da_filtrirate_iste"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />

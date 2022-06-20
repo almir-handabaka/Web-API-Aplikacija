@@ -29,7 +29,7 @@ interface KriptoDao {
     @Query("DELETE FROM kriptovalute")
     suspend fun clear()
 
-    @Query("SELECT * FROM kriptovalute ORDER BY kriptoId DESC")
+    @Query("SELECT * FROM kriptovalute ORDER BY kriptoId ASC")
      fun getAllKriptos(): LiveData<List<Kripto>>
     //za filtriranje dodati upite npr. za cijenu, 24hvolume, markercap
 
