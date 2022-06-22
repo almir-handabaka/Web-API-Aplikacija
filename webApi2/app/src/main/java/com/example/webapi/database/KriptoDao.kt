@@ -1,7 +1,5 @@
 package com.example.webapi.database
 
-import com.example.webapi.database.Kripto
-
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
@@ -31,7 +29,6 @@ interface KriptoDao {
 
     @Query("SELECT * FROM kriptovalute ORDER BY kriptoId ASC")
      fun getAllKriptos(): LiveData<List<Kripto>>
-    //za filtriranje dodati upite npr. za cijenu, 24hvolume, markercap
 
     @Query("SELECT * FROM kriptovalute ORDER BY kriptoId DESC LIMIT 1")
     suspend fun getKripto(): Kripto?

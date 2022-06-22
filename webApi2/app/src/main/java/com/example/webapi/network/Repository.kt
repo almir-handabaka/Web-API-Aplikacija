@@ -2,11 +2,15 @@ package com.example.webapi.network
 
 
 class Repository {
-	suspend fun getPost(): Post{
-		return retrofitInstance.api.getPost()
+	suspend fun getKripto(): Response{
+		return retrofitInstance.api.getKripto()
 	}
 
-	suspend fun getSelectedPost(tag: String): Post{
-		return retrofitInstance.api.getSelectedPost(tag)
+	suspend fun getSelectedKripto(referenceValuta: String): Response{
+		return retrofitInstance.api.getSelectedKripto(referenceValuta)
+	}
+
+	suspend fun getSelectedKripto2(kategorija: String, referenceValuta: String): Response{
+		return retrofitInstance.api.getSelectedKripto2(kategorija, referenceValuta)
 	}
 }

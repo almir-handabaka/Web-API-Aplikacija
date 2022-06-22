@@ -1,6 +1,7 @@
 package com.example.webapi.network
 
 import com.example.webapi.database.Kripto
+import com.squareup.moshi.Json
 
 data class Coin(
 	val uuid: String?,
@@ -15,7 +16,7 @@ data class Coin(
 	val change: String?,
 	val rank: Int?,
 	val coinrankingUrl: String?,
-	val volume24h: String?
+	@field:Json(name = "24hVolume") val volume24h: String?
 )
 
 data class Data(
@@ -23,6 +24,6 @@ data class Data(
 )
 
 
-data class Post (
+data class Response (
 	val data: Data
 )

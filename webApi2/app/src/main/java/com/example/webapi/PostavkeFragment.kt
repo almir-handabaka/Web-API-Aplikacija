@@ -1,6 +1,5 @@
 package com.example.webapi
 
-import android.R
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.webapi.databinding.FragmentPostavkeBinding
-import kotlinx.android.synthetic.main.fragment_postavke.*
 
 
 class PostavkeFragment : Fragment() {
