@@ -3,64 +3,75 @@ package com.example.webapi.network
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.webapi.database.Kripto
 import com.example.webapi.database.KriptoViewModel
 import kotlinx.coroutines.launch
-import retrofit2.http.GET
 
 
 class MainViewModel(private val repository: Repository, var myKriptoViewModel: KriptoViewModel): ViewModel(){
-	val myResponse:MutableLiveData<Post> = MutableLiveData()
+	val myResponse:MutableLiveData<Response> = MutableLiveData()
 
 
-	fun dohvatiPodatkeSaCoinRanking(kategorija: String){
-		if (kategorija == "default"){
-			Log.i("networklogovanje", "default")
-			getPost()
-		}
-		else {
-			Log.i("networklogovanje", "getSelectedPost")
-			getSelectedPost(kategorija)
+	fun dohvatiPodatkeSaCoinRanking(kategorija: String, referenceValuta: String){
+		Log.i("networklogovanje", referenceValuta)
+		try {
+			if(kategorija == "default") {
+				Log.i("networklogovanje", "default")
+				getSelectedKripto(referenceValuta)
+			}
+			else {
+				Log.i("networklogovanje", "getSelectedKripto2")
+				getSelectedKripto2(kategorija, referenceValuta)
+			}
+		} catch(error: Exception){
+			Log.i("networklogovanje", "error pri dohvacanju podataka")
 		}
 	}
 
 
-	fun getPost(){
-		//if(internetIsConnected()){
-			Log.i("networklogovanje", "ima neta")
+	fun getKripto(){
 			viewModelScope.launch{
-				val response = repository.getPost()
+				val response = repository.getKripto()
 				if(response.data.coins.size > 0){
 					myKriptoViewModel.clearTable()
-
+					myKriptoViewModel.addBatchKriptos(response.data.coins)
+					myResponse.value = response
 				}
-				Log.i("networklogovanje3", response.data.toString())
+			}
+
+
+	}
+
+	fun getSelectedKripto(referenceValuta: String){
+		viewModelScope.launch{
+			Log.i("networklogovanje1", "prije response")
+			val response = repository.getSelectedKripto(referenceValuta)
+			Log.i("networklogovanje1", "posle response")
+			if(response.data.coins.size > 0){
+
+				myKriptoViewModel.clearTable()
 				myKriptoViewModel.addBatchKriptos(response.data.coins)
 				myResponse.value = response
+				Log.i("networklogovanje1", "getSelectedKripto")
 			}
-		//} else {
-		//	Log.i("networklogovanje", "nema neta")
-		//}
-
-	}
-
-	fun getSelectedPost(tag:String){
-		//if(internetIsConnected()){
-		Log.i("networklogovanje", "ima neta")
-		viewModelScope.launch{
-			val response = repository.getSelectedPost(tag)
-			myKriptoViewModel.clearTable()
-			myKriptoViewModel.addBatchKriptos(response.data.coins)
-			myResponse.value = response
 		}
-		//} else {
-		//	Log.i("networklogovanje", "nema neta")
-		//}
+
 
 	}
 
+	fun getSelectedKripto2(kategorija:String, referenceValuta:String){
+		viewModelScope.launch{
+			val response = repository.getSelectedKripto2(kategorija, referenceValuta)
+			if(response.data.coins.size > 0){
+				myKriptoViewModel.clearTable()
+				myKriptoViewModel.addBatchKriptos(response.data.coins)
+				myResponse.value = response
+				Log.i("networklogovanje1", "getSelectedKripto2")
+			}
+		}
+
+
+	}
 
 
 
@@ -72,4 +83,15 @@ class MainViewModel(private val repository: Repository, var myKriptoViewModel: K
 			false
 		}
 	}
+
+//	fun isConnected(): Boolean {
+//		val connectivityManager =
+//			getSystemService(context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+//		val networkInfo = connectivityManager!!.activeNetworkInfo
+//		return if (networkInfo != null) {
+//			if (networkInfo.isConnected) true else false
+//		} else false
+//	}
+
+
 }

@@ -9,10 +9,8 @@ import android.view.ViewGroup
 
 class OStudentima : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

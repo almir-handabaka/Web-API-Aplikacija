@@ -147,28 +147,6 @@
             app:layout_constraintStart_toEndOf="@+id/marketCapDetalj"
             app:layout_constraintTop_toBottomOf="@+id/marketCapVrijednost" />
 
-        <TextView
-            android:id="@+id/volume24hDetalj"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="24h volume: "
-            android:textSize="26dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btcPriceDetalj" />
-
-        <TextView
-            android:id="@+id/volume24hVrijednost"
-            android:layout_width="194dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="20dp"
-            android:text="TextView"
-            android:textSize="26dp"
-            app:layout_constraintStart_toEndOf="@+id/btcPriceDetalj"
-            app:layout_constraintTop_toBottomOf="@+id/btcPriceVrijednost" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
