@@ -2,9 +2,11 @@ package com.example.webapi
 
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -23,6 +25,7 @@ class PocetnaFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mContext = context
@@ -38,6 +41,13 @@ class PocetnaFragment : Fragment() {
             view.findNavController().navigate(R.id.action_pocetnaFragment_to_postavkeFragment)
         }
 
+
+        if (AppStatus1.getInstance(mContext).isOnline) {
+            Log.i("wifi status", "online je")
+
+        } else {
+            Log.i("wifi status", "nije online")
+        }
 
         binding.daljeButton.setOnClickListener { view : View ->
             Log.i("problem", "usao u dugme za dalje")

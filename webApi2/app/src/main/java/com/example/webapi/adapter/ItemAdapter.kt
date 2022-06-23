@@ -16,7 +16,7 @@ import com.example.webapi.database.Kripto
 import kotlinx.android.synthetic.main.kartica.view.*
 
 
-// rokni alt enter
+
 class ItemAdapter(private var podaci: List<Kripto>, private val KlikZaDetalje: KlikZaDetalje, private val mContext: Context) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
 

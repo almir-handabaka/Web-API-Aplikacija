@@ -98,7 +98,7 @@ class ListaFragment : Fragment(), KlikZaDetalje {
         adapter.notifyDataSetChanged()
 
         myKriptoViewModel.readAllData.observe(viewLifecycleOwner, Observer {kriptovalute ->
-            Log.i("networklogovanje3", kriptovalute.size.toString())
+            Log.i("netsetData", kriptovalute.size.toString())
             podaci = kriptovalute
             (adapter as ItemAdapter).setData(kriptovalute)
         })
