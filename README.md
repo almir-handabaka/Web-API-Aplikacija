@@ -35,8 +35,7 @@ Klikom na neku datu karticu odlazimo na detalje o datoj kriptovaluti. Informacij
 Svaki fragment koji prikazuje neke podatke kupi ih direktno iz ROOM databaze koja se prethodno popuni podacima koji su pokupljeni pomoću Retrofit biblioteke sa Coinranking API-ja. Prije ucitavanja podataka, ukoliko je mobitel povezan na internet baza ce se popuniti svjezim podacima sa API-ja, u suprotnom će se prikazati podaci koji se već nalaze spaseni u bazi, tako aplikacija može djelimično raditi i dok je mobitel offline. Glide biblioteka je iskorištena za učitavanje slike. URL slike dobijemo preko našeg API-ja i spasimo u bazu. Ova biblioteka ima mehanizme za keširanje slika koje smo iskoristili. Isto tako u slučaju neke greške bit će učitan placeholder slika.
 
 #### Prikazivanje liste slike
-....
-
+Što se tiče ovog dijela, prikazivanja liste slike, uradili smo po principu prikaza slike za odredjenu kripto valutu unutar kartice gdje se nalaze i neki osnovni detalji vezani za tu valutu.
 
 ### Tehnički zahtjevi
 ### Kroz rad na ovoj aplikaciji upotrijebili smo sljedeće tehničke zahtjeve:
@@ -113,3 +112,6 @@ Metoda onCreateViewHolder() adaptera je pozvana da kreira držače pogleda za br
 Konkretno, unutar naše aplikacije, Recycler View smo koristili za prikaz liste kripto valuta koji su prikazani kao kartice i također u fragmentu gdje se vrši prikaz liste kripto valuta nakon kupljenja podataka sa apija ili u slučaju da je mobitel bez interneta, onda kupljenja podataka iz baze.
 #### Repositoy komponenta
 ....
+
+#### Sažetak i utisci
+Kao studenti Prirodno-matematičkog fakulteta, smjera Informacione tehnologije, u sklopu predmeta "Razvoj mobilnih aplikacija" dobili smo za projekat izradu aplikacije koja će vršiti prezentaciju podataka dobivenih preko Web API-ja po našem izboru. Naš projekat je baziran na temu kripto valute. Za kolegu i mene, ovo je drugi projekat koji radimo u kotlinu, tj. pravimo android aplikaciju, pa samim tim je rad bio malo olakšavajuć u izradi stvari koje su nam od ranije poznati, tačnije stvari koje smo koristili u prethodnom projektu. Za razliku od prethodnog projekta, i u ovom ima dosta novih stvari koje smo morali istraživati, pa smo samim tim još dosta toga naučili ali i unaprijedili prethodno znanje. Potrudili smo se da obuhvatimo što više specifikacija i tehničkih zahtjeva koje je bilo neophodno uraditi i ubaciti u projekat. Ukupan dojam kolege i mene je da je rad u timu jako interesantan, efikasan, u nekim slučajevima i olakšavajući. Potrudili smo se da aplikacija bude što jednostavnija i jasnija za korištenje.
