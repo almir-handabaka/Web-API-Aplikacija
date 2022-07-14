@@ -37,7 +37,11 @@ class ItemAdapter(private var podaci: List<Kripto>, private val KlikZaDetalje: K
         holder.itemView.rankValute.text = "rank: #" + podatak.rank.toString()
         holder.itemView.cijenaValute.text = "cijena: " + znak + " " + "%,.7f".format(podatak.price?.toDouble()).toString()
 
-        val url: String = podatak.iconUrl!!
+        var url: String = podatak.iconUrl!!
+        url = url.dropLast(4)
+        url += ".png"
+
+
         Glide.with(mContext)
             .load(url)
             .fitCenter()
